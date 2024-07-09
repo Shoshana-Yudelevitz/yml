@@ -21,7 +21,7 @@ jobs:
 
       # Validate branch name
       - name: Validate branch name
-        if: ${{ github.event_name != 'pull_request' }}  # Perform validation only for push events
+        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}  # Perform validation for both push and pull_request events
         run: |
           echo "Validating branch name..."
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
