@@ -37,3 +37,9 @@ jobs:
 
       - name: Run tests
         run: npm test
+              # Validate branch name
+      - name: Validate branch name
+        if: "!startsWith(github.ref, 'refs/heads/name/')"
+        run: |
+          echo "Branch name does not follow the required pattern."
+          exit 1
